@@ -1,5 +1,5 @@
 // Network first, cache as fallback: updates show straight away, and the sheet still opens with no signal.
-const CACHE='ocf-dayworks-v5';
+const CACHE='ocf-dayworks-v6';
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'])));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
